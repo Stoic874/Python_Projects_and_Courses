@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python3
 
 import os
 from PIL import Image
@@ -13,10 +13,9 @@ dir = sys.argv[1]
 files = os.listdir(dir)
 for f in files:
     path = os.path.join(dir, f)
-    if path[0] == '.':
-        continue
+    print("Converting: {}".format(path))
+    if f[0] != ('0'):
+        print("Skipping...")
     else:
         im = Image.open(path)
-        new_im = im.resize((600, 400)).convert('RGB').save("~/supplier-data/images/{}".format(f), format='jpeg')
-
-
+        new_im = im.resize((600, 400)).convert('RGB').save("supplier-data/images/{}.jpeg".format(f[:-5], format='jpeg'))
