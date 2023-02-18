@@ -17,21 +17,16 @@ def process_data():
       path = os.path.join(dir, file)
       with open(path) as opened:
           lines = opened.readlines()
-          #make a list of dictionaries
-          dict = ""
           name = lines[0].strip()
           weight = lines[1].strip()
           paragraph += ("name: {} <br/>".format(name) + "weight: {} lbs <br/><br/>".format(weight)) 
     return paragraph
-    
-   
 
 def main(argv):
     title = "Processed Update on {}".format(today)
     paragraph = process_data()
     #generate a report
     reports.generate_report("/tmp/processed.pdf", title, paragraph)
-
     sender = "automation@example.com"
     recipient = "{}@example.com".format(os.environ.get('USER'))
     subject = "Upload Completed - Online Fruit Store"
